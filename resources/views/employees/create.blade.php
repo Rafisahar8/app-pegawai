@@ -1,3 +1,8 @@
+@extends('layouts.master')
+
+@section('title', 'Form Input Pegawai')
+
+@section('content')
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,3 +55,4 @@
     </form>
 </body>
 </html>
+@endsection

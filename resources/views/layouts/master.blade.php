@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('title', 'App Pegawai')</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
     <header>
