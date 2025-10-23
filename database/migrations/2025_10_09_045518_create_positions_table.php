@@ -4,24 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
-    /**
-     * Run the migrations.
-     */
+return new class extends Migration {
     public function up(): void
     {
         Schema::create('positions', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_jabatan', 100);
-            $table->decimal('gaji_pokok', 10, 2);
+            $table->string('position_name')->unique(); // nama jabatan
+            $table->foreignId('department_id')         // relasi ke tabel departments
+                  ->constrained('departments')
+                  ->onDelete('cascade');
+            $table->decimal('gaji_pokok', 15, 2)->default(0);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('positions');

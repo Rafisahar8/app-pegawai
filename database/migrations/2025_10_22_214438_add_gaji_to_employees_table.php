@@ -8,16 +8,15 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('departments', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->timestamps();
+        Schema::table('employees', function (Blueprint $table) {
+            $table->decimal('gaji', 15, 2)->default(0)->after('status');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('departments');
+        Schema::table('employees', function (Blueprint $table) {
+            $table->dropColumn('gaji');
+        });
     }
 };
